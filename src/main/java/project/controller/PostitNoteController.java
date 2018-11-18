@@ -25,8 +25,7 @@ public class PostitNoteController {
     // Method that returns the correct view for the URL /postit
     // This handles the GET request for this URL
     // Notice the `method = RequestMethod.GET` part
-    @RequestMapping(value = "/postit", method = RequestMethod.GET)
-    public String postitNoteViewGet(Model model){
+
 
         // Add a new Postit Note to the model for the form
         // If you look at the form in PostitNotes.jsp, you can see that we
