@@ -2,10 +2,12 @@ package project.persistence.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 import project.persistence.entities.PostitNote;
 import project.persistence.entities.Whiskey;
 
-import java.util.List;*/
+import java.util.List;
+@Repository
 public interface WhiskeyRepository extends JpaRepository<Whiskey, Long> {
 
     Whiskey save(Whiskey whiskey);

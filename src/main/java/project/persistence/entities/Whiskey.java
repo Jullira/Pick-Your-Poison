@@ -16,42 +16,37 @@ import javax.persistence.*;
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private Long id;
-
         private String name;
         private String description;
         private String alcohol;
 
         // Notice the empty constructor, because we need to be able to create an empty PostitNote to add
         // to our model so we can use it with our form
+        public Whiskey(){}
 
         public Whiskey(String name, String description, String alcohol) {
+
             this.name = name;
             this.description = description;
             this.alcohol = alcohol;
         }
 
-        public Long getId() {
-            return id;
-        }
+        public Long getId() { return id;}
 
-        public void setId(Long id) {
-            this.id = id;
-        }
+        public void setId(Long id) { this.id = id;}
 
-        public String getName() {
-            return name;
-        }
+        public String getName() { return name; }
 
         public void setName(String name) {
             this.name = name;
         }
 
         public String getDescription() {
-            return note;
+            return description;
         }
 
         public void setDescription(String description) {
-            this.note = description;
+            this.description = description;
         }
 
         public String getAlcohol() {
@@ -71,4 +66,4 @@ import javax.persistence.*;
         }
     }
 
-}
+

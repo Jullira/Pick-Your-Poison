@@ -2,6 +2,7 @@ package project.persistence.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 import project.persistence.entities.PostitNote;
 
 import java.util.List;
@@ -13,6 +14,7 @@ import java.util.List;
  * http://docs.spring.io/spring-data/data-commons/docs/1.6.1.RELEASE/reference/html/repositories.html
  *
  */
+@Repository
 public interface PostitNoteRepository extends JpaRepository<PostitNote, Long> {
 
     PostitNote save(PostitNote postitNote);
