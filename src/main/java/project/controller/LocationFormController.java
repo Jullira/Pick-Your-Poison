@@ -12,23 +12,23 @@ import project.service.StringManipulationService;
 import project.service.WhiskeyService;
 
 @Controller
-public class WhiskeyFormController {
-    WhiskeyService whiskeyService;
+public class LocationFormController {
+
+    StringManipulationService stringService;
 
     // Dependency Injection
     @Autowired
-    public WhiskeyFormController(StringManipulationService stringService) {this.whiskeyService=whiskeyService;}
+    public LocationFormController(StringManipulationService stringService) {this.stringService=stringService;}
 
-    // GETS WHISKEY CRITERIA FROM DATABASE
-    // Method that receives the POST request on the URL "/WhiskeySearch"
+    // GETS LOCATIONS FROM DATABASE
+    // Method that receives the POST request on the URL "/LocationSearch"
     // and receives the ModelAttribute("whiskey") function from it
-        @RequestMapping(value = "/WhiskeySearch", method = RequestMethod.GET)
-        public String getWhiskeyView(@ModelAttribute("whiskey") Whiskey whiskey, Model model){
+    @RequestMapping(value = "/LocationSearch", method = RequestMethod.GET)
+    public String getWhiskeyView(@ModelAttribute("location") Location location, Model model){
 
         // sends the search parameters into database and returns all relivant info to model
-        model.addAttribute("WhiskeySearchResults",WhiskeyService.findAll(whiskey));
+        model.addAttribute("LocationSearchResults",LokationService.findAll(whiskey));
 
-        return "appropriate jsp file name";
-        }
+        return "appropriate jsp file";
     }
-
+}

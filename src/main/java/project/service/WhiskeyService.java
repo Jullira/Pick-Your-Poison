@@ -6,6 +6,9 @@ import java.util.List;
 
 public interface WhiskeyService {
 
+    static void findAll(Whiskey whiskey) {
+    }
+
     /**
      * Save a {@link Whiskey}
      * @param Whiskey {@link Whiskey} to be saved
