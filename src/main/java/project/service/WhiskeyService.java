@@ -55,4 +55,7 @@ public interface WhiskeyService {
      */
     List<Whiskey> findByAlcohol(String alcohol);
 
+
+    List<Whiskey> findByDescription(String description);
+
 }

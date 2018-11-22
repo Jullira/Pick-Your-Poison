@@ -4,8 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import project.persistence.entities.Location;
+import project.persistence.entities.PostitNote;
 import project.persistence.entities.Whiskey;
 import project.service.WhiskeyService;
 
@@ -17,16 +20,27 @@ public class WhiskeyFormController {
     @Autowired
     public WhiskeyFormController(WhiskeyService whiskeyService) {this.whiskeyService=whiskeyService;}
 
-    // GETS WHISKEY CRITERIA FROM DATABASE
-    // Method that receives the POST request on the URL "/WhiskeySearch"
-    // and receives the ModelAttribute("whiskey") function from it
-        @RequestMapping(value = "/WhiskeySearch", method = RequestMethod.GET)
-        public String getWhiskeyView(@ModelAttribute("whiskey") Whiskey whiskey, Model model){
+    // GET WHISKEY BY NAME
+    @RequestMapping(value = "/WhiskeySearchResults/{name}", method = RequestMethod.GET)
+    public String GetWhiskeyFromName(@PathVariable String name, Model model) {
 
-        // sends the search parameters into database and returns all relivant info to model
-        model.addAttribute("WhiskeySearchResults",WhiskeyService.findAll(whiskey));
+        // Get all whiskey Notes with this name and add them to the model
+        model.addAttribute("location", whiskeyService.findByName(name));
 
-        return "appropriate jsp file name";
-        }
+        // Add a new whiskey to the model for the form
+        // If you look at the form in jsp, you can see that we
+        // reference this attribute there by the name `locationSearchResult`.
+        model.addAttribute("locationSearchResult", new Location());
+
+        // Return the view
+        return "postitnotes/PostitNotes";
+    }
+
+    // GET ALL AVAILABLE WHISKEY
+    //  create a controller
+
+
+
+
     }
 

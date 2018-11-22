@@ -3,12 +3,8 @@ package project.service.Implementation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import project.persistence.entities.Location;
-import project.persistence.entities.Whiskey;
 import project.persistence.repositories.LocationRepository;
-import project.persistence.repositories.WhiskeyRepository;
 import project.service.LocationService;
-import project.service.WhiskeyService;
-
 import java.util.Collections;
 import java.util.List;
 
@@ -41,12 +37,12 @@ public class LocationServiceImplimentation implements LocationService {
     @Override
     public List<Location> findAllReverseOrder() {
         // Get all the Postit notes
-        List<Location> postitNotes = repository.findAll();
+        List<Location> location = repository.findAll();
 
         // Reverse the list
-        Collections.reverse(postitNotes);
+        Collections.reverse(location);
 
-        return postitNotes;
+        return location;
     }
 
     @Override

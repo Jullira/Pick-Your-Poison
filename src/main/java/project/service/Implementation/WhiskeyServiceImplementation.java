@@ -38,13 +38,13 @@ public class WhiskeyServiceImplementation implements WhiskeyService {
 
     @Override
     public List<Whiskey> findAllReverseOrder() {
-        // Get all the Postit notes
-        List<Whiskey> postitNotes = repository.findAll();
+        // get all the whiskey
+        List<Whiskey> whiskey = repository.findAll();
 
         // Reverse the list
-        Collections.reverse(postitNotes);
+        Collections.reverse(whiskey);
 
-        return postitNotes;
+        return whiskey;
     }
 
     @Override
@@ -58,7 +58,10 @@ public class WhiskeyServiceImplementation implements WhiskeyService {
     }
 
     @Override
-    public List<Whiskey> findByAlcohol(String alcohol) {
-        return null;
-    }
+    public List<Whiskey> findByDescription(String description) {return repository.findByName(description);}
+
+    @Override
+    public List<Whiskey> findByAlcohol(String alcohol) {return repository.findByName(alcohol);}
+
+
 }
