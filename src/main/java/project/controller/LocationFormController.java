@@ -7,18 +7,18 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import project.persistence.entities.Location;
-import project.persistence.entities.Whiskey;
-import project.service.StringManipulationService;
-import project.service.WhiskeyService;
+import project.service.LocationService;
+
 
 @Controller
 public class LocationFormController {
 
-    StringManipulationService stringService;
+    LocationService locationService;
+
 
     // Dependency Injection
     @Autowired
-    public LocationFormController(StringManipulationService stringService) {this.stringService=stringService;}
+    public LocationFormController(LocationService locationService) {this.locationService=locationService;}
 
     // GETS LOCATIONS FROM DATABASE
     // Method that receives the POST request on the URL "/LocationSearch"
@@ -27,7 +27,7 @@ public class LocationFormController {
     public String getWhiskeyView(@ModelAttribute("location") Location location, Model model){
 
         // sends the search parameters into database and returns all relivant info to model
-        model.addAttribute("LocationSearchResults",LokationService.findAll(whiskey));
+        model.addAttribute("LocationSearchResults", LocationService.findAll());
 
         return "appropriate jsp file";
     }

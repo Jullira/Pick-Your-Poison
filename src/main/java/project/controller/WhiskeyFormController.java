@@ -6,9 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import project.persistence.entities.Location;
 import project.persistence.entities.Whiskey;
-import project.service.StringManipulationService;
 import project.service.WhiskeyService;
 
 @Controller
@@ -17,7 +15,7 @@ public class WhiskeyFormController {
 
     // Dependency Injection
     @Autowired
-    public WhiskeyFormController(StringManipulationService stringService) {this.whiskeyService=whiskeyService;}
+    public WhiskeyFormController(WhiskeyService whiskeyService) {this.whiskeyService=whiskeyService;}
 
     // GETS WHISKEY CRITERIA FROM DATABASE
     // Method that receives the POST request on the URL "/WhiskeySearch"
