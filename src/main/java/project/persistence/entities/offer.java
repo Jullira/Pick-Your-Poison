@@ -1,6 +1,8 @@
 package project.persistence.entities;
 
 import javax.persistence.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 /**
  * The class for the Postit Note itself.
@@ -9,53 +11,61 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "offers") // If you want to specify a table name, you can do so here
-public class offer {
+public class Offer {
 
     // Declare that this attribute is the id
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long offerId;
+    private Long id;
 
-    private int locationId;
-    private int drinkId;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "location_id")
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private Location location;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "drink_id")
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private Drink drink;
+
     private int price;
-    private int mLiters;
+    private int volume;
 
 
     // Notice the empty constructor, because we need to be able to create an empty PostitNote to add
     // to our model so we can use it with our form
-    public offer() {
+    public Offer() {
     }
 
-    public offer(String locationName, String address) {
-        this.locationId = locationId;
-        this.drinkId = drinkId;
+    public Offer(Location location, Drink drink, int price, int volume) {
+        this.location = location;
+        this.drink = drink;
         this.price = price;
-        this.mLiters = mLiters;
+        this.volume = volume;
     }
 
     public Long getId() {
-        return offerId;
+        return id;
     }
 
-    public void setId(Long offerId) {
-        this.offerId = offerId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public int getLocationId() {
-        return locationId;
+    public Location getLocation() {
+        return location;
     }
 
-    public void setLoctionId(int locationId) {
-        this.locationId = locationId;
+    public void setLoction(Location location) {
+        this.location = location;
     }
 
-    public int getDrinkId() {
-        return drinkId;
+    public Drink getDrink() {
+        return drink;
     }
 
-    public void setDrinkId(int drinkId) {
-        this.drinkId = drinkId;
+    public void setDrink(Drink drink) {
+        this.drink = drink;
     }
 
     public int getPrice() {
@@ -66,12 +76,12 @@ public class offer {
         this.price = price;
     }
 
-    public int getMLiters() {
-        return mLiters;
+    public int getVolume() {
+        return volume;
     }
 
-    public void setMliters(int Mliters) {
-        this.mLiters = mLiters;
+    public void setVolume(int volume) {
+        this.volume = volume;
     }
     // This is for easier debug.
     //@Override

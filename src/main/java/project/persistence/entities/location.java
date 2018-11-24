@@ -1,6 +1,7 @@
 package project.persistence.entities;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * The class for the Postit Note itself.
@@ -9,40 +10,43 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "locations") // If you want to specify a table name, you can do so here
-public class location {
+public class Location {
 
     // Declare that this attribute is the id
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long locationId;
+    private Long id;
 
-    private String locationName;
+    private String name;
     private String address;
+
+    @OneToMany (mappedBy = "location")
+    private List<Offer> offers;
 
     // Notice the empty constructor, because we need to be able to create an empty PostitNote to add
     // to our model so we can use it with our form
-    public location() {
+    public Location() {
     }
 
-    public location(String locationName, String address) {
-        this.locationName = locationName;
+    public Location(String name, String address) {
+        this.name = name;
         this.address = address;
     }
 
     public Long getId() {
-        return locationId;
+        return id;
     }
 
-    public void setId(Long drinksId) {
-        this.locationId = locationId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
-        return locationName;
+        return name;
     }
 
-    public void setName(String locationName) {
-        this.locationName = locationName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getAddress() {
