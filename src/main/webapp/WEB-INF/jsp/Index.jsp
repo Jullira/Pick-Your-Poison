@@ -6,8 +6,7 @@
 <html lang="en">
 
 <head>
-
-    <title>Pick your posion</title>
+    <title>Pick Your Poison</title>
     <link rel="stylesheet" type="text/css" href="<c:url value="/css/index.css"/>"/>
 
 </head>
@@ -20,15 +19,17 @@
     <div class="choice-container">
         <div class="container">
             <h3>Whiskey</h3>
+            <ul>
+                <li><a href="/whiskeysearch">Search by Whiskey</a></li>
+            </ul>
         </div>
         <div class="container">
             <h3>Locations</h3>
+            <ul>
+                <li><a href="/locationsearch">Search by Location</a></li>
+            </ul>
         </div>
     </div>
 </div>
-
-<ul>
-    <li><a href="/postit">Click here for Persistence Layer Demo</a></li>
-</ul>
 </body>
 </html>
