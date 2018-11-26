@@ -3,62 +3,61 @@ package project.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import project.persistence.entities.Whiskey;
+import project.service.SearchService;
 import project.service.StringManipulationService;
 import project.service.WhiskeyService;
 
+import java.util.List;
+
 @Controller
 public class WhiskeyFormController {
-    StringManipulationService stringService;
 
-    // Dependency Injection
+    private WhiskeyService whiskeyService;
+
     @Autowired
-    public WhiskeyFormController(StringManipulationService stringService) {
-        this.stringService = stringService;
+    public WhiskeyFormController(SearchService searchService) { this.whiskeyService = whiskeyService;}
+
+    @RequestMapping(value = "/search", method = RequestMethod.GET)
+    public String search(){
+
+        return "Search";
     }
 
-    // get whiskey search result from database
-    @RequestMapping(value = "/whiskey", method = RequestMethod.GET)
-    public String WhiskeyViewGet(Model model) {
-        this.stringService = stringService;
-
-
+    /**
+     * search()
+     * Path: "/search"
+     * Purpose: Displays the search home with input fields for the search
+     * @return the search jsp with input fields
+     */
+    @RequestMapping(value = "/search", method = RequestMethod.GET)
+    public String searchHome(Model model) {
+        // Search parameters will be put into Whiskey object
         model.addAttribute("whiskey", new Whiskey());
-
-        return "/whiskeySearchResult";
+        return "/search" + "/Search";
     }
 
-    // get whiskey search page
-    @RequestMapping(value = "/whiskeysearch")
-    public String WhiskeySearchGet(Model model) {
-        this.stringService = stringService;
-        model.addAttribute("whiskey", new Whiskey());
-        return "whiskeysearch/WhiskeySearch";
+    /**
+     * Handles when the user post a search request
+     * @param whiskey containing search parameters
+     * @param model for the jsp
+     * @return a jsp file containing the search site with added search results
+     */
+    @RequestMapping(value = "/search", method = RequestMethod.POST)
+    public String whiskeySearch(@ModelAttribute("WhiskeySearch") Whiskey whiskey, Model model) {
+
+        List<Whiskey> results = (List<Whiskey>) WhiskeyService.searchWhiskeyByName(whiskey);
+
+        // Add results to model
+        model.addAttribute("results", results);
+
+        // Get things ready for new search
+        model.addAttribute("Whiskey", new Whiskey());
+        return "/search" + "/Search";
     }
 
-    // get location search page
-    @RequestMapping(value = "/locationsearch")
-    public String LocationSearchGet(Model model) {
-        this.stringService = stringService;
-        model.addAttribute("whiskey", new Whiskey());
-        return "locationsearch/LocationSearch";
-    }
-
-    // Request mapping is the path that you want to map this method to
-    // In this case, the mapping is the root "/", so when the project
-    // is running and you enter "localhost:8080" into a browser, this
-    // method is called
-    @RequestMapping(value = "/form", method = RequestMethod.GET)
-    public String Form() {
-
-        // The string "Index" that is returned here is the name of the view
-        // (the Index.jsp file) that is in the path /main/webapp/WEB-INF/jsp/
-        // If you change "Index" to something else, be sure you have a .jsp
-        // file that has the same name
-        return "Form";
-    }
 
 }
-
