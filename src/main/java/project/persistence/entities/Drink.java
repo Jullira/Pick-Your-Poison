@@ -19,8 +19,10 @@ public class Drink {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String name;
+    private String Category;
+    private String Description;
+
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
@@ -37,6 +39,7 @@ public class Drink {
     public Drink() {
     }
 
+
     public Drink(String name, Category category, String description) {
         this.name = name;
         this.category = category;
@@ -52,7 +55,7 @@ public class Drink {
         this.id = id;
     }
 
-    public String getName() {
+    public  String getName() {
         return name;
     }
 
