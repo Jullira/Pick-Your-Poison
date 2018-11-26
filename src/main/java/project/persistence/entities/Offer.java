@@ -4,11 +4,7 @@ import javax.persistence.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
-/**
- * The class for the Postit Note itself.
- * The system generates a table schema based on this class for this entity.
- * Be sure to annotate any entities you have with the @Entity annotation.
- */
+
 @Entity
 @Table(name = "offers") // If you want to specify a table name, you can do so here
 public class Offer {
@@ -83,11 +79,5 @@ public class Offer {
     public void setVolume(int volume) {
         this.volume = volume;
     }
-    // This is for easier debug.
-    //@Override
-    /*public String toString() {
-        return String.format(
-                "Postit Note[name=%s, note=%s]",
-                name,note);
-    }*/
+
 }

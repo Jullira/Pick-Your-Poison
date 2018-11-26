@@ -60,3 +60,9 @@ input:hover {
     background-color: #616161;
     color: #F5F5F5;
 }
+
+.faux-div {
+    margin: 10px;
+    float: left;
+    width: 45px;
+}

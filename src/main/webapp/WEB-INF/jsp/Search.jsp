@@ -31,7 +31,7 @@
             <input type="submit" VALUE="I HAVE PICKED MY POISON!"/>
         </sf:form>
     </div>
-    <div>
+    <div class="list-container">
         <c:choose>
             <%--If the model has an attribute with the name `prices`--%>
             <c:when test="${not empty prices}">

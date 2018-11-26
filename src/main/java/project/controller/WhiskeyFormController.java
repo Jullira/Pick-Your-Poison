@@ -19,7 +19,7 @@ public class WhiskeyFormController {
     private WhiskeyService whiskeyService;
 
     @Autowired
-    public WhiskeyFormController(SearchService searchService) { this.whiskeyService = whiskeyService;}
+    public WhiskeyFormController(WhiskeyService whiskeyService) { this.whiskeyService = whiskeyService;}
 
     @RequestMapping(value = "/search", method = RequestMethod.GET)
     public String search(){
@@ -49,7 +49,7 @@ public class WhiskeyFormController {
     @RequestMapping(value = "/search", method = RequestMethod.POST)
     public String whiskeySearch(@ModelAttribute("WhiskeySearch") Whiskey whiskey, Model model) {
 
-        List<Whiskey> results = (List<Whiskey>) WhiskeyService.searchWhiskeyByName(whiskey);
+        List<Whiskey> results = (List<Whiskey>) whiskeyService.searchWhiskeyByName(whiskey);
 
         // Add results to model
         model.addAttribute("results", results);
