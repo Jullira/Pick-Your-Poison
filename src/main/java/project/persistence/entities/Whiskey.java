@@ -1,14 +1,10 @@
 package project.persistence.entities;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
-    /**
-     * The class for the Postit Note itself.
-     * The system generates a table schema based on this class for this entity.
-     * Be sure to annotate any entities you have with the @Entity annotation.
-     */
-
-    @Entity
+@Entity
     @Table(name = "whiskey") // If you want to specify a table name, you can do so here
     public class Whiskey {
 
@@ -20,16 +16,19 @@ import javax.persistence.*;
         private String description;
         private String alcohol;
 
+    @ElementCollection
+    @CollectionTable(name="type", joinColumns=@JoinColumn(name="type_id"))
+    @Column(name="type")
+    private List<String> type = new ArrayList<>();
         // Notice the empty constructor, because we need to be able to create an empty PostitNote to add
         // to our model so we can use it with our form
         public Whiskey(){}
 
-        public Whiskey(String name, String description, String alcohol) {
-
+        /*public Whiskey(String name, String description, String alcohol) {
             this.name = name;
             this.description = description;
             this.alcohol = alcohol;
-        }
+        }*/
 
         public Long getId() { return id;}
 
@@ -64,6 +63,14 @@ import javax.persistence.*;
                     "Whiskey[name=%s, description=%s, alcohik=%s]",
                     name,description, alcohol);
         }
+
+    public List<String> getType() {
+        return type;
+    }
+
+    public void setType(List<String> type) {
+        this.type = type;
+    }
     }
 
 

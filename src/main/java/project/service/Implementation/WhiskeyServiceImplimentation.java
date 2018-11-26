@@ -43,6 +43,11 @@ public class WhiskeyServiceImplimentation implements WhiskeyService{
     }
 
     @Override
+    public List<Whiskey> search(Whiskey whiskey) {
+        return null;
+    }
+
+    @Override
     public List<Whiskey> searchWhiskeyByName(Whiskey whiskey) {
         return repository.findByName(whiskey.getName());
     }
@@ -51,4 +56,6 @@ public class WhiskeyServiceImplimentation implements WhiskeyService{
     public List<Whiskey> findByAlcohol(String alcohol) {
         return null;
     }
+
+
 }

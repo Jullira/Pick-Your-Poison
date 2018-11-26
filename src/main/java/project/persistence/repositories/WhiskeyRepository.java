@@ -42,4 +42,6 @@ public interface WhiskeyRepository extends JpaRepository<Whiskey, Long> {
      */
     List<Whiskey> findByName(String name);
 
+
+
 }
