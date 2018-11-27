@@ -38,10 +38,18 @@ public interface WhiskeyService {
      */
     Whiskey findOne(Long id);
 
+
     /**
-     * Find all {@link Whiskey}s with {@link String name}
-     * @param whiskey {@link String}
-     * @return All {@link Whiskey}s with the {@link String name} passed
+     * Searches for Whiskey matching the properties of the given Whiskey
+     *
+     * @param whiskey that contains the search properties
+     * @return a list of Whiskey object that match the search criteria
+     */
+    List<Whiskey> search(Whiskey whiskey);
+    /**
+     * Searches for whiskey by name
+     * @param whiskey to search for
+     * @return a list of whiskey objects that have a name that match the name param
      */
     List<Whiskey> searchWhiskeyByName(Whiskey whiskey);
 
