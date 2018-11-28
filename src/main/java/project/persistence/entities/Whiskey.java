@@ -16,6 +16,8 @@ import java.util.List;
         private String description;
         private String alcohol;
 
+        private String price;
+
     @ElementCollection
     @CollectionTable(name="type", joinColumns=@JoinColumn(name="type_id"))
     @Column(name="type")
@@ -39,6 +41,12 @@ import java.util.List;
         public void setName(String name) {
             this.name = name;
         }
+
+        public String getPrice() { return price; }
+
+        public void setPrice(String price) {
+        this.price = price;
+    }
 
         public String getDescription() {
             return description;

@@ -21,7 +21,10 @@ public class Drink {
     private Long id;
     private String name;
     private String Category;
-    private String Description;
+
+    private String price;
+    // (redundant declaration?)
+    // private String Description;
 
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -61,6 +64,14 @@ public class Drink {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public  String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
     }
 
     public Category getCategory() {

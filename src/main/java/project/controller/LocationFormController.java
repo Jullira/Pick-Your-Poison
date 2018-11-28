@@ -12,6 +12,7 @@ import project.service.StringManipulationService;
 //import project.service.WhiskeyService;
 
 import project.service.LocationService;
+import project.service.WhiskeyService;
 
 import java.util.List;
 
@@ -21,7 +22,9 @@ public class LocationFormController {
     private LocationService LocationService;
 
     @Autowired
-    public LocationFormController(SearchService searchService) { this.LocationService = LocationService;}
+    public LocationFormController(LocationService locationService) { this.LocationService = LocationService;}
+    //public WhiskeyFormController(WhiskeyService whiskeyService) { this.whiskeyService = whiskeyService;}
+    //public LocationFormController(SearchService searchService) { this.LocationService = LocationService;}
 
     @RequestMapping(value = "/search", method = RequestMethod.GET)
     public String search(){

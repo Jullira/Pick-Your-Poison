@@ -20,11 +20,12 @@ public class WhiskeyFormController {
     @Autowired
     public WhiskeyFormController(WhiskeyService whiskeyService) { this.whiskeyService = whiskeyService;}
 
+
     @RequestMapping(value = "/search", method = RequestMethod.GET)
     public String search(){
-
         return "Search";
     }
+
 
     /**
      * search()
@@ -32,6 +33,9 @@ public class WhiskeyFormController {
      * Purpose: Displays the search home with input fields for the search
      * @return the search jsp with input fields
      */
+
+
+//    @RequestMapping(value = "/searchModel", method = RequestMethod.GET)
     @RequestMapping(value = "/search", method = RequestMethod.GET)
     public String searchHome(Model model) {
         // Search parameters will be put into Whiskey object
@@ -39,12 +43,15 @@ public class WhiskeyFormController {
         return "/search" + "/Search";
     }
 
+
+
     /**
      * Handles when the user post a search request
      * @param whiskey containing search parameters
      * @param model for the jsp
      * @return a jsp file containing the search site with added search results
      */
+//    @RequestMapping(value = "/searchWhiskey", method = RequestMethod.POST)
     @RequestMapping(value = "/search", method = RequestMethod.POST)
     public String whiskeySearch(@ModelAttribute("WhiskeySearch") Whiskey whiskey, Model model) {
 
