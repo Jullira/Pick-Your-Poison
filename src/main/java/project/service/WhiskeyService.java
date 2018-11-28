@@ -8,14 +8,14 @@ public interface WhiskeyService {
 
     /**
      * Save a {@link Whiskey}
-     * @param Whiskey {@link Whiskey} to be saved
+     * @param whiskey {@link Whiskey} to be saved
      * @return {@link Whiskey} that was saved
      */
     Whiskey save(Whiskey whiskey);
 
     /**
      * Delete {@link Whiskey}
-     * @param Whiskey {@link Whiskey} to be deleted
+     * @param whiskey {@link Whiskey} to be deleted
      */
     void delete(Whiskey whiskey);
 
@@ -38,12 +38,20 @@ public interface WhiskeyService {
      */
     Whiskey findOne(Long id);
 
+
     /**
-     * Find all {@link Whiskey}s with {@link String name}
-     * @param name {@link String}
-     * @return All {@link Whiskey}s with the {@link String name} passed
+     * Searches for Whiskey matching the properties of the given Whiskey
+     *
+     * @param whiskey that contains the search properties
+     * @return a list of Whiskey object that match the search criteria
      */
-    List<Whiskey> findByName(String name);
+    List<Whiskey> search(Whiskey whiskey);
+    /**
+     * Searches for whiskey by name
+     * @param whiskey to search for
+     * @return a list of whiskey objects that have a name that match the name param
+     */
+    List<Whiskey> searchWhiskeyByName(Whiskey whiskey);
 
     /**
      *  Finda all {@link Whiskey}s with {@link String alcohol}

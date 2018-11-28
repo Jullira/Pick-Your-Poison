@@ -7,6 +7,7 @@
 
 <head>
     <title>Pick Your Poison</title>
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="<c:url value="/css/index.css"/>"/>
 
 </head>
@@ -17,18 +18,18 @@
 </div>
 <div class="main-container">
     <div class="choice-container">
-        <div class="container">
-            <h3>Whiskey</h3>
-            <ul>
-                <li><a href="/whiskeysearch">Search by Whiskey</a></li>
-            </ul>
-        </div>
-        <div class="container">
-            <h3>Locations</h3>
-            <ul>
-                <li><a href="/locationsearch">Search by Location</a></li>
-            </ul>
-        </div>
+        <a href="/search">
+            <div class="container">
+                <h3>Whiskey</h3>
+                <p>Search by Whiskey</p>
+            </div>
+        </a>
+        <a href="/locationsearch">
+            <div class="container">
+                <h3>Locations</h3>
+                <p>Search by Location</p>
+            </div>
+        </a>
     </div>
 </div>
 </body>

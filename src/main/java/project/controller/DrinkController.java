@@ -6,19 +6,19 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import project.persistence.entities.Whiskey;
+import project.persistence.entities.Drink;
 import project.service.SearchService;
-import project.service.WhiskeyService;
+import project.service.DrinkService;
 
 import java.util.List;
 
 @Controller
-public class WhiskeyFormController {
+public class DrinkController {
 
-    private WhiskeyService whiskeyService;
+    private DrinkService drinkService;
 
     @Autowired
-    public WhiskeyFormController(WhiskeyService whiskeyService) { this.whiskeyService = whiskeyService;}
+    public DrinkController(DrinkService DrinkService) { this.drinkService = DrinkService;}
 
     @RequestMapping(value = "/search", method = RequestMethod.GET)
     public String search(){
@@ -34,27 +34,27 @@ public class WhiskeyFormController {
      */
     @RequestMapping(value = "/search", method = RequestMethod.GET)
     public String searchHome(Model model) {
-        // Search parameters will be put into Whiskey object
-        model.addAttribute("whiskey", new Whiskey());
+        // Search parameters will be put into Drink object
+        model.addAttribute("Drink", new Drink());
         return "/search" + "/Search";
     }
 
     /**
      * Handles when the user post a search request
-     * @param whiskey containing search parameters
+     * @param drink containing search parameters
      * @param model for the jsp
      * @return a jsp file containing the search site with added search results
      */
     @RequestMapping(value = "/search", method = RequestMethod.POST)
-    public String whiskeySearch(@ModelAttribute("WhiskeySearch") Whiskey whiskey, Model model) {
+    public String DrinkSearch(@ModelAttribute("DrinkSearch") Drink drink, Model model) {
 
-        List<Whiskey> results = (List<Whiskey>) whiskeyService.searchWhiskeyByName(whiskey);
+        List<Drink> results = (List<Drink>) drinkService.searchDrinkByName(drink);
 
         // Add results to model
         model.addAttribute("results", results);
 
         // Get things ready for new search
-        model.addAttribute("Whiskey", new Whiskey());
+        model.addAttribute("Drink", new Drink());
         return "/search" + "/Search";
     }
 
