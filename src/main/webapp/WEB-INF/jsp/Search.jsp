@@ -34,24 +34,25 @@
     <div>
         <c:choose>
             <%--If the model has an attribute with the name `prices`--%>
-            <c:when test="${not empty prices}">
+            <c:when test="${not empty offers}">
                 <%--Create a table for the prices--%>
                 <ul class="drinks">
 
                         <%--For each drink, that is in the list that was passed in the model--%>
                         <%--generate a row in the table--%>
                         <%--Here we set `drink` as a singular item out of the list `drinks`--%>
-                    <c:forEach var="drink" items="${drink}">
+                    <c:forEach var="offer" items="${offers}">
                         <%--We can reference attributes of the Entity by just entering the name we gave--%>
                         <%--it in the singular item var, and then just a dot followed by the attribute name--%>
 
                         <%--Create a link based on the name attribute value--%>
-                        <li><a href="/drink/${drink.name}">${drink.name}</a></li>
+                        <%--<li><a href="/drink/${drink.name}">${drink.name}</a></li>--%>
+                        <li>NAME: ${offer.name}, LOCATION: ${offer.location.name}, PRICE: ${offer.price}</li>
                     </c:forEach>
                 </ul>
             </c:when>
 
-            <%--If all tests are false, then do this--%>
+                    <%--If all tests are false, then do this--%>
             <c:otherwise>
                 <h3>No drink chosen</h3>
             </c:otherwise>

@@ -2,38 +2,63 @@ package project.persistence.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.stereotype.Repository;
-import project.persistence.entities.Offer;
 
+import project.persistence.entities.Drink;
+import project.persistence.entities.Offer;
 import java.util.List;
 
-/**
- * By extending the {@link JpaRepository} we have access to powerful methods.
- * For detailed information, see:
- * http://docs.spring.io/spring-data/commons/docs/current/api/org/springframework/data/repository/CrudRepository.html
- * http://docs.spring.io/spring-data/data-commons/docs/1.6.1.RELEASE/reference/html/repositories.html
- *
- */
-@Repository
-public interface OfferRepository extends JpaRepository<Offer, Long> {
+
+public interface OfferRepository  extends JpaRepository<Offer, Long> {
+
+    /**
+     * Save Offer to the database
+     *
+     * @param Offer to be saved
+     * @return the Offer that was saved
+     */
+    Offer save(Offer Offer);
+
+    /**
+     * Delete a Offer from the datbase
+     *
+     * @param Offer to be deleted
+     */
+    void delete(Offer Offer);
 
 
     List<Offer> findAll();
 
-    // If we need a custom query that maybe doesn't fit the naming convention used by the JPA repository,
-    // then we can write it quite easily with the @Query notation, like you see below.
-    // This method returns all PostitNotes where the length of the name is equal or greater than 3 characters.
-    @Query(value = "SELECT p FROM Offer p where length(p.name) >= 3 ")
-    List<Offer> findAllWithNameLongerThan3Chars();
+    /**
+     * Find one Offer in the database after id
+     *
+     * @param id of the Offer to be found
+     * @return the Offer with the given id
+     */
+    /*@Query(value = "SELECT r FROM Offer r WHERE r.id = ?1")
+    Offer findOne(Long id);*/
 
-    // Instead of the method findAllReverseOrder() in PostitNoteService.java,
-    // We could have used this method by adding the words
-    // ByOrderByIdDesc, which mean: Order By Id in a Descending order
-    //
-    List<Offer> findAllByOrderByIdDesc();
+    /**
+     * Search for a Offer by price
+     *
+     * @return a list of Offers that match the query
+     */
+    /*List<Offer> findByPrice(String price);*/
 
-    @Query(value = "SELECT p FROM Offer p WHERE p.id = ?1")
-    Offer findOne(Long id);
+    /**
+     * Searches for Offers by name
+     *
+     * @param name to search for
+     * @return a list of Offer that have a name matching the parameter
+     */
+    /*@Query(value = "SELECT price FROM offers")
+    List<Offer> findByName(String name);*/
 
-    List<Offer> findByName(String name);
+    /**
+     * Searches for Offers by name
+     *
+     * @param name to search for
+     * @return a list of Offer that have a name matching the parameter
+     */
+    List<Offer> findByName(String name1);
+
 }

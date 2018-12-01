@@ -38,5 +38,6 @@ public interface PostitNoteRepository extends JpaRepository<PostitNote, Long> {
     @Query(value = "SELECT p FROM PostitNote p WHERE p.id = ?1")
     PostitNote findOne(Long id);
 
+
     List<PostitNote> findByName(String name);
 }
