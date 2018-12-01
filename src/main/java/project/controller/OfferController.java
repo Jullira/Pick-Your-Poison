@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import project.persistence.entities.Drink;
 import project.persistence.entities.Offer;
 import project.persistence.entities.Location;
-import project.persistence.entities.PostitNote;
 import project.service.OfferService;
 import project.service.StringManipulationService;
 
@@ -19,6 +18,7 @@ import java.util.List;
 
 
 @Controller
+@RequestMapping("/")
 public class OfferController {
 
     private OfferService offerService;
@@ -26,24 +26,26 @@ public class OfferController {
     @Autowired
     public OfferController(OfferService offerService) { this.offerService = offerService;}
 
-    List<Drink> drinks;
-    List<Location> locations;
+//    List<Drink> drinks;
+//    List<Location> locations;
+//    List<Offer> offers;
 
     @RequestMapping(value = "/search")
     public String searchHome(Model model) {
+
         // Search parameters will be put into Offer object
         model.addAttribute("Offer", new Offer());
         System.out.println("serachController virkar");
         System.out.println(model);
-        return "Search";
+        return "search";
     }
 
-    @RequestMapping(value = "/search/{name}", method = RequestMethod.GET)
+    @RequestMapping(value = "/search/{name}", method = RequestMethod.POST)
     public String searchByName(@PathVariable String name, Model model){
 
         // Get all Postit Notes with this name and add them to the model
         List<Offer> nameOffer = offerService.findByName(name);
-        model.addAttribute( "offers", nameOffer);
+        model.addAttribute( "Offer", nameOffer);
 
         // Add a new Postit Note to the model for the form
         // If you look at the form in PostitNotes.jsp, you can see that we
@@ -51,7 +53,7 @@ public class OfferController {
         System.out.println(model);
         System.out.println("nafnið er: "+ name);
         // Return the view
-        return "Search";
+        return "search";
     }
 
     /*@RequestMapping(value = "/Search1", method = RequestMethod.GET)

@@ -18,13 +18,13 @@
 </div>
 <div class="main-container">
     <div class="choice-container">
-        <a href="/Search">
+        <a href="/search">
             <div class="container">
                 <h3>Whiskey</h3>
                 <p>Search by Whiskey</p>
             </div>
         </a>
-        <a href="/locationsearch">
+        <a href="/search">
             <div class="container">
                 <h3>Locations</h3>
                 <p>Search by Location</p>
