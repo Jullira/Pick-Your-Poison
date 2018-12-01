@@ -27,5 +27,4 @@ public interface OfferService {
     */
    List<Offer> findByName(String name);
 
-
 }

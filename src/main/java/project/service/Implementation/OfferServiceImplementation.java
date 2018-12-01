@@ -2,6 +2,7 @@ package project.service.Implementation;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import project.persistence.entities.Drink;
 import project.persistence.entities.Offer;
 import project.persistence.repositories.OfferRepository;
@@ -19,6 +20,7 @@ public class OfferServiceImplementation implements OfferService {
         this.repository = repository;
     }
 
+
    // @Override
    // public Optional<Offer> searchOfferById(Offer Offer) {
    //     return repository.findById(Offer.getId());
@@ -29,6 +31,7 @@ public class OfferServiceImplementation implements OfferService {
         return repository.findByName(name);
     }
 */
+
     @Override
     public List<Offer> findAll() {
         return repository.findAll();
