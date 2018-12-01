@@ -14,48 +14,67 @@ import java.util.List;
 @Entity
 @Table(name = "drinks") // If you want to specify a table name, you can do so here
 public class Drink {
+
     // Declare that this attribute is the id
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    private String Category;
+    private String Description;
+
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Category category;
+
     private String description;
+
     @OneToMany (mappedBy = "drink")
     private List<Offer> offers;
+
     // Notice the empty constructor, because we need to be able to create an empty PostitNote to add
     // to our model so we can use it with our form
     public Drink() {
     }
+
+
     public Drink(String name, Category category, String description) {
         this.name = name;
         this.category = category;
         this.description = description;
     }
+
+
     public Long getId() {
         return id;
     }
+
     public void setId(Long id) {
         this.id = id;
     }
-    public String getName() {
+
+    public  String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
+
     public Category getCategory() {
         return category;
     }
+
     public void setCategory(Category category) {
         this.category = category;
     }
+
     public String getDescription() {
         return description;
     }
+
     public void setDescription(String description) {
         this.description = description;
     }
