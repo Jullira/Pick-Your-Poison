@@ -25,7 +25,7 @@ public interface OfferService {
     * @param name {@link String}
     * @return All {@link Offer}s with the {@link String name} passed
     */
-   List<Offer> findByName(String name);
+   List<Offer> findAllByNameLike(String name);
 
 
 }

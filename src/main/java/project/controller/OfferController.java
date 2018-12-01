@@ -27,20 +27,32 @@ public class OfferController {
     List<Drink> drinks;
     List<Location> locations;
 
-    @RequestMapping(value = "/search")
+    @RequestMapping(value = "/search", method = RequestMethod.GET)
     public String searchHome(Model model) {
+        // Save the Postit Note that we received from the form
         // Search parameters will be put into Offer object
-        model.addAttribute("Offer", new Offer());
-        System.out.println("serachController virkar");
+        model.addAttribute("offer", new Offer());
+        System.out.println("searchController virkar");
         System.out.println(model);
         return "Search";
+
+    }
+
+    @RequestMapping(value = "/search", method = RequestMethod.POST)
+    public String searchTmp(@ModelAttribute("offer") Offer offer, Model model) {
+        // Save the Postit Note that we received from the form
+        // Search parameters will be put into Offer object
+        model.addAttribute("offer", new Offer());
+        model.addAttribute("offers", offerService.findAllByNameLike(offer.getName()));
+        return "Search";
+
     }
 
     @RequestMapping(value = "/search/{name}", method = RequestMethod.GET)
     public String searchByName(@PathVariable String name, Model model){
 
         // Get all Postit Notes with this name and add them to the model
-        List<Offer> nameOffer = offerService.findByName(name);
+        List<Offer> nameOffer = offerService.findAllByNameLike(name);
         model.addAttribute( "offers", nameOffer);
 
         // Add a new Postit Note to the model for the form

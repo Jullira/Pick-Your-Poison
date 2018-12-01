@@ -2,6 +2,7 @@
 
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
 
 <html lang="en">
 
@@ -20,17 +21,12 @@
 </div>
 <div class="main-container">
     <p>write in the drink or location you want to find down below and we will get you to your poison &#128521</p>
-
+    <sf:form name="search" method="POST" modelAttribute="offer" action="/search/">
     <div class="form-container">
-
-        <sf:form method="POST" modelAttribute="" action="/search" class="search__form">
-            <%--the `path` attribute matches the `name` attribute of the Entity that was passed in the model--%>
-            <label for=" search__input">search: </label>
-
-            <sf:input id="search__input" path="search" type="text" placeholder="Enter drink or location"/>
-            <input type="submit" VALUE="I HAVE PICKED MY POISON!"/>
-        </sf:form>
+        <sf:input path="name" type="text" placeholder="Enter name of drink"/>
+        <input type="submit" VALUE="I HAVE PICKED MY POISON!"/>
     </div>
+    </sf:form>
     <div>
         <c:choose>
             <%--If the model has an attribute with the name `prices`--%>

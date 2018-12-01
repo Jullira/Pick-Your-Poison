@@ -35,8 +35,8 @@ public class OfferServiceImplementation implements OfferService {
     }
 
     @Override
-    public List<Offer> findByName(String name) {
-        return repository.findByName(name);
+    public List<Offer> findAllByNameLike(String name) {
+        return repository.findAllByNameLike(name);
     }
 
 

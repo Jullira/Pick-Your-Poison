@@ -60,4 +60,7 @@ public interface OfferRepository  extends JpaRepository<Offer, Long> {
      */
     List<Offer> findByName(String name1);
 
+    @Query(value = "SELECT o FROM Offer o where o.name LIKE %?1%")
+    List<Offer> findAllByNameLike(String name);
+
 }
