@@ -23,13 +23,21 @@ public class OfferServiceImplementation implements OfferService {
    // public Optional<Offer> searchOfferById(Offer Offer) {
    //     return repository.findById(Offer.getId());
    // }
-
+/*
     @Override
     public List<Offer> searchOfferByName(String name) {
         return repository.findByName(name);
     }
+*/
+    @Override
+    public List<Offer> findAll() {
+        return repository.findAll();
+    }
 
-
+    @Override
+    public List<Offer> findByName(String name) {
+        return repository.findByName(name);
+    }
 
 
 }
