@@ -20,7 +20,7 @@
     </div>
 </div>
 <div class="main-container">
-    <p>write in the drink or location you want to find down below and we will get you to your poison &#128521</p>
+    <p>write in the drink you want to find down below and we will get you to your poison &#128521</p>
     <sf:form name="search" method="POST" modelAttribute="offer" action="/search/">
     <div class="form-container">
         <sf:input path="name" type="text" placeholder="Enter name of drink"/>
@@ -29,20 +29,17 @@
     </sf:form>
     <div>
         <c:choose>
-            <%--If the model has an attribute with the name `prices`--%>
+            <%--If the model has an attribute with the name `offer`--%>
             <c:when test="${not empty offers}">
-                <%--Create a table for the prices--%>
+                <%--Create a table for the offers--%>
                 <ul class="drinks">
 
-                        <%--For each drink, that is in the list that was passed in the model--%>
+                        <%--For each name, that is in the list that was passed in the model--%>
                         <%--generate a row in the table--%>
-                        <%--Here we set `drink` as a singular item out of the list `drinks`--%>
+                        <%--Here we set `offer` as a singular item out of the list `offers`--%>
                     <c:forEach var="offer" items="${offers}">
                         <%--We can reference attributes of the Entity by just entering the name we gave--%>
                         <%--it in the singular item var, and then just a dot followed by the attribute name--%>
-
-                        <%--Create a link based on the name attribute value--%>
-                        <%--<li><a href="/drink/${drink.name}">${drink.name}</a></li>--%>
                         <li>NAME: ${offer.name}, LOCATION: ${offer.location.name}, PRICE: ${offer.price}</li>
                     </c:forEach>
                 </ul>
@@ -50,7 +47,7 @@
 
                     <%--If all tests are false, then do this--%>
             <c:otherwise>
-                <h3>No drink chosen</h3>
+                <h3>No drink chosen!</h3>
             </c:otherwise>
         </c:choose>
     </div>
