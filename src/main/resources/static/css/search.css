@@ -51,12 +51,29 @@ html {
     color: #F5F5F5;
 }
 
-input {
+.input-button, .search-bar {
     background-color: #F5F5F5;
     border: 1px solid black;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
 }
 
-input:hover {
+.input-button:hover {
     background-color: #616161;
     color: #F5F5F5;
+}
+
+li {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    margin: 5px;
+    list-style: none;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+
+ul {
+    padding-left: 0;
+    text-align: left;
 }

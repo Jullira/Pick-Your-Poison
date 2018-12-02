@@ -17,15 +17,15 @@
     <div class="faux-div"></div>
     <h1>PICK YOUR POISON!</h1>
     <a class="link" href="/">Home</a>
-    </div>
+</div>
 </div>
 <div class="main-container">
-    <p>write in the drink or location you want to find down below and we will get you to your poison &#128521</p>
+    <p>Type in the drink you want to find down below and we will get you to your poison &#128521</p>
     <sf:form name="search" method="POST" modelAttribute="offer" action="/search/">
-    <div class="form-container">
-        <sf:input path="name" type="text" placeholder="Enter name of drink"/>
-        <input type="submit" VALUE="I HAVE PICKED MY POISON!"/>
-    </div>
+        <div class="form-container">
+            <sf:input class="search-bar" path="name" type="text" placeholder="Enter name of drink"/>
+            <input class="input-button" type="submit" VALUE="I HAVE PICKED MY POISON!"/>
+        </div>
     </sf:form>
     <div>
         <c:choose>
@@ -43,12 +43,17 @@
 
                         <%--Create a link based on the name attribute value--%>
                         <%--<li><a href="/drink/${drink.name}">${drink.name}</a></li>--%>
-                        <li>NAME: ${offer.name}, LOCATION: ${offer.location.name}, PRICE: ${offer.price}</li>
+                        <li><h3>${offer.name}</h3>
+                            <div class="list-item-desc">
+                                <p>LOCATION: ${offer.location.name}</p>
+                                <p>PRICE: ${offer.price}</p>
+                            </div>
+                        </li>
                     </c:forEach>
                 </ul>
             </c:when>
 
-                    <%--If all tests are false, then do this--%>
+            <%--If all tests are false, then do this--%>
             <c:otherwise>
                 <h3>No drink chosen</h3>
             </c:otherwise>
