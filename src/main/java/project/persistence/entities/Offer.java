@@ -30,7 +30,6 @@ public class Offer {
 
     private int price;
     private int volume;
-    private String name;
 
 
     // Notice the empty constructor, because we need to be able to create an empty PostitNote to add
@@ -38,12 +37,11 @@ public class Offer {
     public Offer() {
     }
 
-    public Offer(Location location, Drink drink, int price, int volume, String name) {
+    public Offer(Location location, Drink drink, int price, int volume) {
         this.location = location;
         this.drink = drink;
         this.price = price;
         this.volume = volume;
-        this.name = name;
     }
 
     public Long getId() {
@@ -84,14 +82,6 @@ public class Offer {
 
     public void setVolume(int volume) {
         this.volume = volume;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
     // This is for easier debug.
     //@Override

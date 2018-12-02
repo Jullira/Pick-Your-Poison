@@ -1,19 +1,10 @@
 package project.controller;
 
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import project.persistence.entities.Drink;
+import org.springframework.web.bind.annotation.GetMapping;
 import project.persistence.entities.Offer;
-import project.persistence.entities.Location;
-import project.persistence.entities.PostitNote;
 import project.service.OfferService;
-import project.service.StringManipulationService;
 
 import java.util.List;
 
@@ -87,12 +78,8 @@ public class OfferController {
         List<Offer> results = (List<Offer>) model.addAttribute("Offers", offerService.searchOfferByName(name));
         model.addAttribute("results", results);
 
-        model.addAttribute("Drink", new Offer());
-        System.out.println("-------SKLABOÐ ÚT CONTROLLER------------");
 
-        // Return the view
-        return "Search";
+
+        return "offer";
     }
-    *
-    * */
 }
