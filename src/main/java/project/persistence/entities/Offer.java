@@ -33,7 +33,7 @@ public class Offer {
     private String name;
 
 
-    // Notice the empty constructor, because we need to be able to create an empty PostitNote to add
+    // Notice the empty constructor, because we need to be able to create an empty Offer to add
     // to our model so we can use it with our form
     public Offer() {
     }
@@ -93,11 +93,4 @@ public class Offer {
     public void setName(String name) {
         this.name = name;
     }
-    // This is for easier debug.
-    //@Override
-    /*public String toString() {
-        return String.format(
-                "Postit Note[name=%s, note=%s]",
-                name,note);
-    }*/
 }

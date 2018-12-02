@@ -52,11 +52,4 @@ public class Category {
     public void setName(String name) {
         this.name = name;
     }
-    // This is for easier debug.
-    //@Override
-    /*public String toString() {
-        return String.format(
-                "Postit Note[name=%s, note=%s]",
-                name,note);
-    }*/
 }

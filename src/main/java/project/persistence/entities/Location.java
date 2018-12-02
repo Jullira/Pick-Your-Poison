@@ -23,7 +23,7 @@ public class Location {
     @OneToMany (mappedBy = "location")
     private List<Offer> offers;
 
-    // Notice the empty constructor, because we need to be able to create an empty PostitNote to add
+    // Notice the empty constructor, because we need to be able to create an empty Location to add
     // to our model so we can use it with our form
     public Location() {
     }
@@ -56,11 +56,4 @@ public class Location {
     public void setAddress(String address) {
         this.address = address;
     }
-    // This is for easier debug.
-    //@Override
-    /*public String toString() {
-        return String.format(
-                "Postit Note[name=%s, note=%s]",
-                name,note);
-    }*/
 }
