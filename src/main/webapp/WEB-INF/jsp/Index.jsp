@@ -18,7 +18,7 @@
 </div>
 <div class="main-container">
     <div class="choice-container">
-        <a href="/search">
+        <a href="/Search">
             <div class="container">
                 <h3>Whiskey</h3>
                 <p>Search by Whiskey</p>
