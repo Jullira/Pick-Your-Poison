@@ -10,9 +10,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import project.persistence.entities.Drink;
 import project.persistence.entities.Offer;
 import project.persistence.entities.Location;
-import project.persistence.entities.PostitNote;
 import project.service.OfferService;
-import project.service.StringManipulationService;
+
 
 import java.util.List;
 
