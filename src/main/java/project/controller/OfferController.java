@@ -12,10 +12,72 @@ import java.util.List;
 @Controller
 public class OfferController {
 
-    @GetMapping("/offer")
-    public String offer(Model model) {
+    private OfferService offerService;
 
-        model.addAttribute("offers", OfferService.findAll());
+    @Autowired
+    public OfferController(OfferService offerService) { this.offerService = offerService;}
+
+    List<Drink> drinks;
+    List<Location> locations;
+
+    @RequestMapping(value = "/search", method = RequestMethod.GET)
+    public String searchHome(Model model) {
+        // Save the Postit Note that we received from the form
+        // Search parameters will be put into Offer object
+        model.addAttribute("offer", new Offer());
+        System.out.println("searchController virkar");
+        System.out.println(model);
+        return "Search";
+
+    }
+
+    @RequestMapping(value = "/search", method = RequestMethod.POST)
+    public String searchTmp(@ModelAttribute("offer") Offer offer, Model model) {
+        // Save the Postit Note that we received from the form
+        // Search parameters will be put into Offer object
+        model.addAttribute("offer", new Offer());
+        model.addAttribute("offers", offerService.findAllByNameLike(offer.getName()));
+        return "Search";
+
+    }
+
+    @RequestMapping(value = "/search/{name}", method = RequestMethod.GET)
+    public String searchByName(@PathVariable String name, Model model){
+
+        // Get all Postit Notes with this name and add them to the model
+        List<Offer> nameOffer = offerService.findAllByNameLike(name);
+        model.addAttribute( "offers", nameOffer);
+
+        // Add a new Postit Note to the model for the form
+        // If you look at the form in PostitNotes.jsp, you can see that we
+        // reference this attribute there by the name `postitNote`.
+        System.out.println(model);
+        System.out.println("nafnið er: "+ name);
+        // Return the view
+        return "Search";
+    }
+
+    /*@RequestMapping(value = "/Search1", method = RequestMethod.GET)
+    public String search(@ModelAttribute("offers") Offer offer,
+                         Model model){
+    // variable sem heitir lookup
+        // Get all Postit Notes with this name and add them to the model
+        List<Offer> results = (List<Offer>) model.addAttribute("Offers", offerService.findAll());
+        model.addAttribute("results", results);
+
+        System.out.println("-------SKLABOÐ ÚT CONTROLLER------------");
+
+        // Return the view
+        return "Search";
+    }
+    /*
+    *    @RequestMapping(value = "/Search", method = RequestMethod.GET)
+    public String search(@PathVariable String name, Model model){
+    // variable sem heitir lookup
+        // Get all Postit Notes with this name and add them to the model
+        List<Offer> results = (List<Offer>) model.addAttribute("Offers", offerService.searchOfferByName(name));
+        model.addAttribute("results", results);
+
 
 
         return "offer";
