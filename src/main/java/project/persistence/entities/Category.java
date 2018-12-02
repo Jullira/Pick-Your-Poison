@@ -5,11 +5,6 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.List;
 
-/**
- * The class for drink types.
- * The system generates a table schema based on this class for this entity.
- * Be sure to annotate any entities you have with the @Entity annotation.
- */
 @Entity
 @Table(name = "categories") // table name
 public class Category {
@@ -27,7 +22,7 @@ public class Category {
     @OneToMany(mappedBy="category")
     private List<Drink> drinks;
 
-    // Notice the empty constructor, because we need to be able to create an empty PostitNote to add
+    // Notice the empty constructor, because we need to be able to create an empty Category to add
     // to our model so we can use it with our form
     public Category() {
 
@@ -52,11 +47,5 @@ public class Category {
     public void setName(String name) {
         this.name = name;
     }
-    // This is for easier debug.
-    //@Override
-    /*public String toString() {
-        return String.format(
-                "Postit Note[name=%s, note=%s]",
-                name,note);
-    }*/
+
 }

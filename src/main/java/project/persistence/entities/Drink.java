@@ -12,9 +12,9 @@ import java.util.List;
  * Be sure to annotate any entities you have with the @Entity annotation.
  */
 @Entity
-@Table(name = "drinks") // If you want to specify a table name, you can do so here
+@Table(name = "drinks") // table name
 public class Drink {
-    // Declare that this attribute is the id
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -26,7 +26,7 @@ public class Drink {
     private String description;
     @OneToMany (mappedBy = "drink")
     private List<Offer> offers;
-    // Notice the empty constructor, because we need to be able to create an empty PostitNote to add
+    // Notice the empty constructor, because we need to be able to create an empty Drink to add
     // to our model so we can use it with our form
     public Drink() {
     }
@@ -59,11 +59,5 @@ public class Drink {
     public void setDescription(String description) {
         this.description = description;
     }
-    // This is for easier debug.
-    //@Override
-    /*public String toString() {
-        return String.format(
-                "Postit Note[name=%s, note=%s]",
-                name,note);
-    }*/
+
 }
