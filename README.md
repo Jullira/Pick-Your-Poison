@@ -2,19 +2,19 @@
 Pick your poison or 'pyp' is a search program designed to allow its user ways to find where drinks are sold in Reykjavik by name.
 This program is a project for the class HBV501G at University of Iceland.
 
-###The program was made by:
+### The program was made by:
 Ágúst Þorvaldsson
 Ólafur Konráð Albertsson
 Júlíus Reynald Björnsson
 Snævar Þór Guðmundsson
 
-###Teacher:
+### Teacher:
 Matthias Brook
 
-###Class:
+### Class:
 HBV501G
 
-##What you need to run it:
+## What you need to run it:
 A postgre database structure with
 - User: pyp
 - password: asdf1234
@@ -26,7 +26,7 @@ We recommend Chrome
 A intellij IDE
 To run the program as it has not been compiled yet.
 
-##How to run it:
+## How to run it:
 
 When the program is running in intellij you will need to go to this page: http://localhost:8080/
 Then you can access the search site by clicking the Drink button.
