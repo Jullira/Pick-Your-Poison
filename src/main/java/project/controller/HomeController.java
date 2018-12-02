@@ -19,17 +19,11 @@ public class HomeController {
         this.stringService = stringService;
     }
 
-    // Request mapping is the path that you want to map this method to
-    // In this case, the mapping is the root "/", so when the project
-    // is running and you enter "localhost:8080" into a browser, this
-    // method is called
+    // calls upon the index jsp when running and you enter "localhost:8080" into a browser
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String home(){
 
-        // The string "Index" that is returned here is the name of the view
-        // (the Index.jsp file) that is in the path /main/webapp/WEB-INF/jsp/
-        // If you change "Index" to something else, be sure you have a .jsp
-        // file that has the same name
+       // return index to view
         return "Index";
     }
 
